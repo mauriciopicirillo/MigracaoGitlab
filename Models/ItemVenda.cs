@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace tech_test_payment_api.Models
@@ -10,16 +7,19 @@ namespace tech_test_payment_api.Models
     {
         public const int TamanhoMaximoDescricao = 200;
         
-        /// Id do item de venda.
+        // Id do item de venda.
         public int ItemVendaId { get; set; }
         
-        /// Descrição do item da venda.
+        // Descrição do item da venda.
+        [Required(ErrorMessage = "Informe uma descrição.", AllowEmptyStrings = false)]
+        [MaxLength(200, ErrorMessage = "Limite máximo de {0} caracteres.")]
         public string Descricao { get; set; }
 
-        /// Quantidade do item da venda.
+        // Quantidade do item da venda.
         public int? Quantidade { get; set; }
 
-        /// Preço do item da venda.
+        // Preço do item da venda.
+        [Required(ErrorMessage = "Informe o preço.")]
         public decimal? Preco { get; set; }
     }
 }
