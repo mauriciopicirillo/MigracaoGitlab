@@ -46,5 +46,23 @@ namespace tech_test_payment_api.Controllers
             return Ok(venda);
         }
 
+        // Altera o status da venda.
+        [HttpPut("{id}")]
+        public IActionResult Atualizar(int id, Venda status)
+        {
+            var statusBanco = _context.Vendas.Find(id);
+            
+            if (statusBanco == null)
+                return NotFound();
+
+            statusBanco.Status = status.Status;
+
+            _context.Vendas.Update(statusBanco);
+            _context.SaveChanges();
+            
+            return Ok(statusBanco);
+
+        }        
+
     }
 }
