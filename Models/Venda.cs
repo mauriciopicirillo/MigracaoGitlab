@@ -9,7 +9,7 @@ namespace tech_test_payment_api.Models
 {
     public class Venda
     {
-        // Id da Venda
+       // Id da Venda
         public int Id { get; set; }
               
         
@@ -18,16 +18,16 @@ namespace tech_test_payment_api.Models
         public int VendedorId { get; set; }
 
         // Nome do Vendedor
-        public string Nome { get; set; }
+        public string NomeVendedor { get; set; }
 
         // CPF do Vendedor
-        public string Cpf { get; set; }
+        public string VendedorCpf { get; set; }
 
         // e-mail do Vendedor
-        public string Email { get; set; }
+        public string VendedorEmail { get; set; }
 
         // telefone do Vendedor
-        public string Telefone { get; set; }
+        public string VendedorTelefone { get; set; }
         
        
         // Descrição do produto da venda.
@@ -44,6 +44,26 @@ namespace tech_test_payment_api.Models
 
         //Status da Venda
         public StatusVendaEnum Status { get; set; }
+
+
+        public Venda ObterVenda()
+        {
+            return new Venda
+            {
+                Id = Id,
+                VendedorId = VendedorId,
+                NomeVendedor = NomeVendedor,
+                VendedorCpf = VendedorCpf,
+                VendedorEmail = VendedorEmail,
+                VendedorTelefone = VendedorTelefone,
+                Produto = Produto,
+                Quantidade = Quantidade,
+                Preco = Preco,
+                DataVenda = DataVenda,
+                Status = Status,
+
+            };
+        }
 
 
         /// Altera o status da venda para Aguardando Pagamento
@@ -80,6 +100,6 @@ namespace tech_test_payment_api.Models
         public void AlterarStatusCancelar()
         {
             Status = StatusVendaEnum.Cancelada;
-        }
+        } 
     }
 }
