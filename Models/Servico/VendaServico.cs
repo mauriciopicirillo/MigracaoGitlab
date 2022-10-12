@@ -1,41 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using tech_test_payment_api.Context;
 using tech_test_payment_api.Models.Enum;
 using tech_test_payment_api.Models.Exceptions;
 using tech_test_payment_api.Models.Repositorios;
 
 namespace tech_test_payment_api.Models.Servico
 {
+    /// <summary>
+    /// Venda Serviço
+    /// </summary>
     public class VendaServico
     {
         private readonly IRepositorioVenda _repositorioVenda;
-        private readonly ApiDbContext _context;
-
-        public VendaServico(IRepositorioVenda repositorioVenda, ApiDbContext context)
+        
+        /// <summary>
+        /// Ctor.
+        /// </summary>
+        /// <param name="repositorioVenda">Repositório Venda</param>
+        public VendaServico(IRepositorioVenda repositorioVenda)
         {
             _repositorioVenda = repositorioVenda;
-            _context = context;
+            
         }
-
-        
-
-        // public async Task<Venda> BuscarPorId(int? id) 
-        // {
-        //     if ( id == null)
-        //     {
-        //         throw new ArgumentException("Deve ser informado o 'id' de venda.");
-        //     }
-                      
-        //     var venda = await _repositorioVenda.ObterPorIdAsync(x => x.Id == id);
-        //     if ( venda == null)
-        //     {
-        //         throw new Exception("Não existe venda com o 'id' informado.");
-        //     }
-        //     return venda;
-        // } 
 
         // Atualizar venda: 
 

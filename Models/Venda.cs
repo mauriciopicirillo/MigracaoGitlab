@@ -1,50 +1,74 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using tech_test_payment_api.Models.Enum;
 using tech_test_payment_api.Models.Exceptions;
 
 namespace tech_test_payment_api.Models
 {
+    /// <summary>
+    /// Venda
+    /// </summary>
     public class Venda
     {
-       // Id da Venda
+        /// <summary>
+        /// Id da venda.
+        /// </summary>
         public int Id { get; set; }
               
         
-         //Dados do Vendedor
-        // Id do Vendedor
+        //Dados do Vendedor
+        /// <summary>
+        /// Id do vendedor.
+        /// </summary>
         public int VendedorId { get; set; }
 
-        // Nome do Vendedor
+        /// <summary>
+        /// Nome do vendedor.
+        /// </summary>
         public string NomeVendedor { get; set; }
 
-        // CPF do Vendedor
+        /// <summary>
+        /// CPF do vendedor.
+        /// </summary>
         public string VendedorCpf { get; set; }
 
-        // e-mail do Vendedor
+        /// <summary>
+        /// E-mail do vendedor.
+        /// </summary>
         public string VendedorEmail { get; set; }
 
-        // telefone do Vendedor
+        /// <summary>
+        /// DDD Telefone do vendedor.
+        /// </summary>
         public string VendedorTelefone { get; set; }
         
        
-        // Descrição do produto da venda.
+        /// <summary>
+        /// Descrição do item da venda.
+        /// </summary>
         public string Produto { get; set; }
 
-        // Quantidade do item da venda.
+        /// <summary>
+        /// Quantidade do item da venda.
+        /// </summary>
         public int Quantidade { get; set; }
 
-        // Preço do item da venda.
+        /// <summary>
+        /// Preço do item da venda.
+        /// </summary>
         public int Preco { get; set; }
 
-        //Data da Venda
+        /// <summary>
+        /// Data da venda.
+        /// </summary>
         public DateTime DataVenda { get; set; }
 
-        //Status da Venda
+        /// <summary>
+        /// Status da venda.
+        /// </summary>
         public StatusVendaEnum Status { get; set; }
 
+        /// <summary>
+        /// Ctor.
+        /// </summary>
 
         public Venda ObterVenda()
         {
@@ -66,7 +90,9 @@ namespace tech_test_payment_api.Models
         }
 
 
+        /// <summary>
         /// Altera o status da venda para Aguardando Pagamento
+        /// </summary>
         public void AlterarStatusPagamentoAprovado()
         {
             if (Status != StatusVendaEnum.AguardandoPagamento)
@@ -76,7 +102,9 @@ namespace tech_test_payment_api.Models
             Status = StatusVendaEnum.PagamentoAprovado;
         }
 
+        /// <summary>
         /// Altera o status da venda para Enviado Para Transportadora
+        /// </summary>
         public void AlterarStatusEnviarTransportadora()
         {
             if (Status != StatusVendaEnum.PagamentoAprovado)
@@ -86,7 +114,9 @@ namespace tech_test_payment_api.Models
             Status = StatusVendaEnum.EnviadoParaTransportadora;
         }
 
+        /// <summary>
         /// Altera o status da venda para Entregue
+        /// </summary>
         public void AlterarStatusEntregar()
         {
             if (Status != StatusVendaEnum.EnviadoParaTransportadora)
@@ -96,7 +126,9 @@ namespace tech_test_payment_api.Models
             Status = StatusVendaEnum.Entregue;
         }
 
+        /// <summary>
         /// Altera o status da venda para Cancelada
+        /// </summary>
         public void AlterarStatusCancelar()
         {
             Status = StatusVendaEnum.Cancelada;

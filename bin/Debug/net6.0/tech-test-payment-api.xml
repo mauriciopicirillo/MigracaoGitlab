@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>tech-test-payment-api</name>
+    </assembly>
+    <members>
+        <member name="T:tech_test_payment_api.Controllers.VendaController">
+            <summary>
+            Api de Vendas
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Controllers.VendaController.#ctor(tech_test_payment_api.Context.ApiDbContext)">
+            <summary>
+            Ctor.
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Controllers.VendaController.Criar(tech_test_payment_api.Models.Venda)">
+            <summary>
+            Registra uma nova venda.
+            </summary>
+            <param name="venda">Objeto contendo os dados da venda.</param>
+            <returns>200 caso a venda seja registrada com sucessso.</returns>
+            <response code="200">Venda registrada.</response>
+            <response code="400">Venda não registrada.</response>
+        </member>
+        <member name="M:tech_test_payment_api.Controllers.VendaController.Get(System.Int32)">
+            <summary>
+            Retorna a venda de id informado.
+            </summary>
+            <param name="id">Id da venda</param>
+            <returns>Venda de id informado.</returns>
+            <response code="200">Venda encontrada.</response>
+            <response code="404">Venda não encontrada.</response>
+        </member>
+        <member name="M:tech_test_payment_api.Controllers.VendaController.Put(System.Int32,tech_test_payment_api.Models.Venda,System.Nullable{System.Int32})">
+            <summary>
+            Altera o status da venda.
+            </summary>
+            <param name="id">Id da venda.</param>
+            <param name="status">
+            Novo status da venda:
+            1 - Reservado não utilizar.
+            2 - Pagamento Aprovado.
+            3 - Enviado para transportadora.
+            4 - Entregue.
+            5 - Cancelada.
+            </param>
+            <returns>Nenhum conteúdo.</returns>
+            <response code="204">Aleração realizada.</response>
+            <response code="400">Alteração não realizada.</response>
+        </member>
+        <member name="T:tech_test_payment_api.Models.Enum.StatusVendaEnum">
+            <summary>
+            Staus da venda enum
+            </summary>
+        </member>
+        <member name="F:tech_test_payment_api.Models.Enum.StatusVendaEnum.AguardandoPagamento">
+            <summary>
+            Aguardando Pagamento
+            </summary>
+        </member>
+        <member name="F:tech_test_payment_api.Models.Enum.StatusVendaEnum.PagamentoAprovado">
+            <summary>
+            Pagamento Aprovado
+            </summary>
+        </member>
+        <member name="F:tech_test_payment_api.Models.Enum.StatusVendaEnum.EnviadoParaTransportadora">
+            <summary>
+            Enviado Para Transportadora
+            </summary>
+        </member>
+        <member name="F:tech_test_payment_api.Models.Enum.StatusVendaEnum.Entregue">
+            <summary>
+            Entregue
+            </summary>
+        </member>
+        <member name="F:tech_test_payment_api.Models.Enum.StatusVendaEnum.Cancelada">
+            <summary>
+            Cancelada
+            </summary>
+        </member>
+        <member name="T:tech_test_payment_api.Models.Servico.VendaServico">
+            <summary>
+            Venda Serviço
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Models.Servico.VendaServico.#ctor(tech_test_payment_api.Models.Repositorios.IRepositorioVenda)">
+            <summary>
+            Ctor.
+            </summary>
+            <param name="repositorioVenda">Repositório Venda</param>
+        </member>
+        <member name="M:tech_test_payment_api.Models.Servico.VendaServico.AtualizarVenda(tech_test_payment_api.Models.Venda,tech_test_payment_api.Models.Enum.StatusVendaEnum)">
+            <summary>
+            Permite que seja atualizado o status da venda
+            De: Aguardando pagamento Para: Pagamento Aprovado
+            De: Aguardando pagamento Para: Cancelada
+            De: Pagamento Aprovado Para: Enviado para Transportadora
+            De: Pagamento Aprovado Para: Cancelada
+            De: Enviado para Transportador.Para: Entregue
+            </summary>
+            <param name="venda">Dados da venda.</param>
+            <param name="status">Novo status da venda.</param>
+            <returns></returns>
+        </member>
+        <member name="T:tech_test_payment_api.Models.Venda">
+            <summary>
+            Venda
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.Id">
+            <summary>
+            Id da venda.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.VendedorId">
+            <summary>
+            Id do vendedor.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.NomeVendedor">
+            <summary>
+            Nome do vendedor.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.VendedorCpf">
+            <summary>
+            CPF do vendedor.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.VendedorEmail">
+            <summary>
+            E-mail do vendedor.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.VendedorTelefone">
+            <summary>
+            DDD Telefone do vendedor.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.Produto">
+            <summary>
+            Descrição do item da venda.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.Quantidade">
+            <summary>
+            Quantidade do item da venda.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.Preco">
+            <summary>
+            Preço do item da venda.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.DataVenda">
+            <summary>
+            Data da venda.
+            </summary>
+        </member>
+        <member name="P:tech_test_payment_api.Models.Venda.Status">
+            <summary>
+            Status da venda.
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Models.Venda.ObterVenda">
+            <summary>
+            Ctor.
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Models.Venda.AlterarStatusPagamentoAprovado">
+            <summary>
+            Altera o status da venda para Aguardando Pagamento
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Models.Venda.AlterarStatusEnviarTransportadora">
+            <summary>
+            Altera o status da venda para Enviado Para Transportadora
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Models.Venda.AlterarStatusEntregar">
+            <summary>
+            Altera o status da venda para Entregue
+            </summary>
+        </member>
+        <member name="M:tech_test_payment_api.Models.Venda.AlterarStatusCancelar">
+            <summary>
+            Altera o status da venda para Cancelada
+            </summary>
+        </member>
+    </members>
+</doc>
